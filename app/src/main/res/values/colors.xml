@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="hijau1">#E9EFC0</color>
+    <color name="hijau2">#B4E197</color>
+    <color name="hijau3">#83BD75</color>
+    <color name="hijau4">#4E944F</color>
+
+    <color name="logout">#a2b223</color>
+
 </resources>

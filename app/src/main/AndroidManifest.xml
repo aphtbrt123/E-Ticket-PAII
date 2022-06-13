@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ETicket">
         <activity
+            android:name=".activity.BaruActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.Main2Activity"
             android:exported="true"
             android:label="@string/title_activity_main2" />
@@ -22,6 +25,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activity.LoginActivity"
+            android:exported="true" />
+        <activity android:name=".activity.MasukActivity" />
+        <activity android:name=".activity.RegisterActivity" />
     </application>
 
 </manifest>

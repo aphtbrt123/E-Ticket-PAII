@@ -1,5 +1,7 @@
 package com.kantin.e_ticket
 
+import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,9 +11,12 @@ import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.kantin.e_ticket.activity.LoginActivity
+import com.kantin.e_ticket.activity.MasukActivity
 import com.kantin.e_ticket.fragment.AkunFragment
 import com.kantin.e_ticket.fragment.HomeFragment
 import com.kantin.e_ticket.fragment.TiketFragment
+import com.kantin.e_ticket.helper.SharedPref
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,10 +30,21 @@ class MainActivity : AppCompatActivity() {
     private lateinit var menuItem: MenuItem
     private lateinit var bottomNavigationView: BottomNavigationView
 
+    private var statusLogin = false
+
+    private lateinit var s: SharedPref
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        s = SharedPref(this)
+
+        setUpButtonNav()
+
+    }
+
+    fun setUpButtonNav(){
         fm.beginTransaction().add(R.id.container, fragmentHome).show(fragmentHome).commit()
         fm.beginTransaction().add(R.id.container, fragmentTiket).hide(fragmentTiket).commit()
         fm.beginTransaction().add(R.id.container, fragmentAkun).hide(fragmentAkun).commit()
@@ -41,26 +57,30 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when(item.itemId){
                 R.id.navigation_home ->{
-                    callFragment(0,fragmentHome)
+                    callFragment(0,fragmentHome, fragmentHome)
                 }
 
                 R.id.navigation_tiket ->{
-                    callFragment(1,fragmentTiket)
+                    callFragment(1,fragmentTiket, fragmentTiket)
                 }
 
                 R.id.navigation_akun ->{
-                    callFragment(2, fragmentAkun)
+                    if (s.getStatusLogin()){
+                        callFragment(2, fragmentAkun, fragmentAkun)
+                    }else{
+                        startActivity(Intent(this, MasukActivity::class.java))
+                    }
+
                 }
             }
-
             false
         }
     }
 
-    fun callFragment(int: Int, fragment: Fragment){
+    fun callFragment(int: Int, fragment: Fragment, fragment2: Fragment){
         menuItem = menu.getItem(int)
         menuItem.isChecked = true
         fm.beginTransaction().hide(active).show(fragment).commit()
-        active = fragmentAkun
+        active = fragment2
     }
 }

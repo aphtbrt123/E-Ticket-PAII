@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="15dp"
+    android:layout_marginVertical="1dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_artefak"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/artefak_contoh"/>
+
+        <TextView
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="4dp"
+            android:id="@+id/nama_artefak"
+            android:lines="2"
+            android:maxLines="2"
+            android:textStyle="bold"
+            android:ellipsize="marquee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Artefak"/>
+
+        <TextView
+            android:layout_marginVertical="8dp"
+            android:textSize="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/desc_artefak"
+            android:layout_width="wrap_content"
+            android:lines="2"
+            android:maxLines="2"
+            android:layout_height="wrap_content"
+            android:text="Deskripsi Singkat Artefak"/>
+
+
+    </LinearLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>

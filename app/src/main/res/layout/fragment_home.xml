@@ -1,23 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.HomeFragment">
+    android:background="@color/hijau1"
+    tools:context=".fragment.HomeFragment"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text_home"
+    <RelativeLayout
+        android:background="@color/hijau2"
+        android:padding="8dp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:text="Home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@+id/icon_chat"
+            app:cardCornerRadius="17dp"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+
+            <LinearLayout
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_search_black_24"/>
+
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Cari Artefak"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/icon_chat"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_baseline_chat_black_24"/>
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginBottom="15dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vp_slider"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/hijau4"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Artefak"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:background="@color/hijau2"
+                    android:id="@+id/rv_artefak"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/hijau4"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tiket"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:background="@color/hijau2"
+                    android:id="@+id/rv_tiket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/hijau4"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kegiatan di Museum"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:background="@color/hijau2"
+                    android:id="@+id/rv_kegiatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</LinearLayout>

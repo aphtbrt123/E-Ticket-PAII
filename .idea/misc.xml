@@ -3,11 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ETicket/app/src/main/res/drawable/bg_btn_google.xml" value="0.25" />
+        <entry key="..\:/ETicket/app/src/main/res/drawable/btn_daftar.xml" value="0.25462962962962965" />
+        <entry key="..\:/ETicket/app/src/main/res/drawable/btn_login.xml" value="0.25462962962962965" />
+        <entry key="..\:/ETicket/app/src/main/res/drawable/ic_baseline_chat_black_24.xml" value="0.25462962962962965" />
+        <entry key="..\:/ETicket/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.24259259259259258" />
+        <entry key="..\:/ETicket/app/src/main/res/drawable/ic_baseline_search_black_24.xml" value="0.25462962962962965" />
+        <entry key="..\:/ETicket/app/src/main/res/drawable/ic_launcher_background.xml" value="0.24259259259259258" />
+        <entry key="..\:/ETicket/app/src/main/res/layout/activity_login.xml" value="0.259375" />
         <entry key="..\:/ETicket/app/src/main/res/layout/activity_main.xml" value="0.2630208333333333" />
         <entry key="..\:/ETicket/app/src/main/res/layout/activity_main2.xml" value="0.2" />
+        <entry key="..\:/ETicket/app/src/main/res/layout/activity_masuk.xml" value="0.1" />
+        <entry key="..\:/ETicket/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/ETicket/app/src/main/res/layout/fragment_akun.xml" value="0.259375" />
-        <entry key="..\:/ETicket/app/src/main/res/layout/fragment_home.xml" value="0.259375" />
+        <entry key="..\:/ETicket/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/ETicket/app/src/main/res/layout/fragment_tiket.xml" value="0.259375" />
+        <entry key="..\:/ETicket/app/src/main/res/layout/item_artefak.xml" value="0.259375" />
+        <entry key="..\:/ETicket/app/src/main/res/layout/item_slider.xml" value="0.259375" />
         <entry key="..\:/ETicket/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2" />
       </map>
     </option>
