@@ -1,17 +1,26 @@
 package com.kantin.e_ticket.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
+import com.inyongtisto.tokoonline.app.ApiConfig
 import com.inyongtisto.tutorial.adapter.AdapterSlider
+import com.kantin.e_ticket.MainActivity
 import com.kantin.e_ticket.R
 import com.kantin.e_ticket.adapter.AdapterArtefak
 import com.kantin.e_ticket.model.Artefak
+import com.kantin.e_ticket.model.ResponModel
+import kotlinx.android.synthetic.main.activity_login.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,12 +58,37 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
 
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
+        init(view)
+        getTicket()
 
-        vpSlider = view.findViewById(R.id.vp_slider)
-        rvArtefak = view.findViewById(R.id.rv_artefak)
-        rvTiket = view.findViewById(R.id.rv_tiket)
-        rvKegiatan = view.findViewById(R.id.rv_kegiatan)
 
+        return view
+    }
+
+
+
+    private var listTicket:ArrayList<Artefak> = ArrayList()
+    fun getTicket(){
+        ApiConfig.instanceRetrofit.getTicket().enqueue(object :
+            Callback<ResponModel> {
+            override fun onResponse(call: Call<ResponModel>, response: Response<ResponModel>) {
+                val res = response.body()!!
+                if(res.success == 1){
+                    listTicket = res.tickets
+                    displayTicket()
+                }
+            }
+
+            override fun onFailure(call: Call<ResponModel>, t: Throwable) {
+
+            }
+
+        })
+
+    }
+
+
+    fun displayTicket(){
         val arrSlider = ArrayList<Int>()
         arrSlider.add(R.drawable.g_perjuangan)
         arrSlider.add(R.drawable.gsm)
@@ -75,130 +109,131 @@ class HomeFragment : Fragment() {
         val layoutManager3 = LinearLayoutManager(activity)
         layoutManager3.orientation = LinearLayoutManager.HORIZONTAL
 
-        rvArtefak.adapter = AdapterArtefak(arrArtefak)
+        rvArtefak.adapter = AdapterArtefak(requireActivity(), listTicket)
         rvArtefak.layoutManager = layoutManager
 
-        rvTiket.adapter = AdapterArtefak(arrTiket)
+        rvTiket.adapter = AdapterArtefak(requireActivity(), listTicket)
         rvTiket.layoutManager = layoutManager2
 
-        rvKegiatan.adapter = AdapterArtefak(arrKegiatan)
+        rvKegiatan.adapter = AdapterArtefak(requireActivity(), listTicket)
         rvKegiatan.layoutManager = layoutManager3
+    }
 
-
-
-
-
-        return view
+    fun init(view: View){
+        vpSlider = view.findViewById(R.id.vp_slider)
+        rvArtefak = view.findViewById(R.id.rv_artefak)
+        rvTiket = view.findViewById(R.id.rv_tiket)
+        rvKegiatan = view.findViewById(R.id.rv_kegiatan)
     }
 
     //recycler artefak home
-    val arrArtefak: ArrayList<Artefak>get(){
-        val arr = ArrayList<Artefak>()
-        val A1 =  Artefak()
-        A1.nama = "Artefak 1"
-        A1.shortDescription = "Ini Artefak 1"
-        A1.gambar = R.drawable.artefak1
-
-        val A2 =  Artefak()
-        A2.nama = "Artefak 2"
-        A2.shortDescription = "Ini Artefak 2"
-        A2.gambar = R.drawable.artefak2
-
-        val A3 =  Artefak()
-        A3.nama = "Artefak 3"
-        A3.shortDescription = "Ini Artefak 3"
-        A3.gambar = R.drawable.artefak3
-
-        val A4 =  Artefak()
-        A4.nama = "Artefak 4"
-        A4.shortDescription = "Ini Artefak 4"
-        A4.gambar = R.drawable.artefak4
-
-        val A5 =  Artefak()
-        A5.nama = "Artefak 5"
-        A5.shortDescription = "Ini Artefak 5"
-        A5.gambar = R.drawable.artefak5
-
-        arr.add(A1)
-        arr.add(A2)
-        arr.add(A3)
-        arr.add(A4)
-        arr.add(A5)
-
-        return arr
-    }
-
-    val arrTiket: ArrayList<Artefak>get(){
-        val arr = ArrayList<Artefak>()
-        val A1 =  Artefak()
-        A1.nama = "Tiket 1"
-        A1.shortDescription = "Ini Tiket 1"
-        A1.gambar = R.drawable.artefak1
-
-        val A2 =  Artefak()
-        A2.nama = "Tiket 2"
-        A2.shortDescription = "Ini Tiket 2"
-        A2.gambar = R.drawable.artefak2
-
-        val A3 =  Artefak()
-        A3.nama = "Tiket 3"
-        A3.shortDescription = "Ini Tiket 3"
-        A3.gambar = R.drawable.artefak3
-
-        val A4 =  Artefak()
-        A4.nama = "Tiket 4"
-        A4.shortDescription = "Ini Tiket 4"
-        A4.gambar = R.drawable.artefak4
-
-        val A5 =  Artefak()
-        A5.nama = "Tiket 5"
-        A5.shortDescription = "Ini Tiket 5"
-        A5.gambar = R.drawable.artefak5
-
-        arr.add(A1)
-        arr.add(A2)
-        arr.add(A3)
-        arr.add(A4)
-        arr.add(A5)
-
-        return arr
-    }
-
-    val arrKegiatan: ArrayList<Artefak>get(){
-        val arr = ArrayList<Artefak>()
-        val A1 =  Artefak()
-        A1.nama = "Kegiatan 1"
-        A1.shortDescription = "Ini Kegiatan 1"
-        A1.gambar = R.drawable.artefak1
-
-        val A2 =  Artefak()
-        A2.nama = "Kegiatan 2"
-        A2.shortDescription = "Ini Kegiatan 2"
-        A2.gambar = R.drawable.artefak2
-
-        val A3 =  Artefak()
-        A3.nama = "Kegiatan 3"
-        A3.shortDescription = "Ini Kegiatan 3"
-        A3.gambar = R.drawable.artefak3
-
-        val A4 =  Artefak()
-        A4.nama = "Kegiatan 4"
-        A4.shortDescription = "Ini Kegiatan 4"
-        A4.gambar = R.drawable.artefak4
-
-        val A5 =  Artefak()
-        A5.nama = "Kegiatan 5"
-        A5.shortDescription = "Ini Kegiatan 5"
-        A5.gambar = R.drawable.artefak5
-
-        arr.add(A1)
-        arr.add(A2)
-        arr.add(A3)
-        arr.add(A4)
-        arr.add(A5)
-
-        return arr
-    }
+//    val arrArtefak: ArrayList<Artefak>get(){
+//        val arr = ArrayList<Artefak>()
+//        val A1 =  Artefak()
+//        A1.nama = "Artefak 1"
+//        A1.shortDescription = "Ini Artefak 1"
+//        A1.gambar = R.drawable.artefak1
+//
+//        val A2 =  Artefak()
+//        A2.nama = "Artefak 2"
+//        A2.shortDescription = "Ini Artefak 2"
+//        A2.gambar = R.drawable.artefak2
+//
+//        val A3 =  Artefak()
+//        A3.nama = "Artefak 3"
+//        A3.shortDescription = "Ini Artefak 3"
+//        A3.gambar = R.drawable.artefak3
+//
+//        val A4 =  Artefak()
+//        A4.nama = "Artefak 4"
+//        A4.shortDescription = "Ini Artefak 4"
+//        A4.gambar = R.drawable.artefak4
+//
+//        val A5 =  Artefak()
+//        A5.nama = "Artefak 5"
+//        A5.shortDescription = "Ini Artefak 5"
+//        A5.gambar = R.drawable.artefak5
+//
+//        arr.add(A1)
+//        arr.add(A2)
+//        arr.add(A3)
+//        arr.add(A4)
+//        arr.add(A5)
+//
+//        return arr
+//    }
+//
+//    val arrTiket: ArrayList<Artefak>get(){
+//        val arr = ArrayList<Artefak>()
+//        val A1 =  Artefak()
+//        A1.nama = "Tiket 1"
+//        A1.shortDescription = "Ini Tiket 1"
+//        A1.gambar = R.drawable.artefak1
+//
+//        val A2 =  Artefak()
+//        A2.nama = "Tiket 2"
+//        A2.shortDescription = "Ini Tiket 2"
+//        A2.gambar = R.drawable.artefak2
+//
+//        val A3 =  Artefak()
+//        A3.nama = "Tiket 3"
+//        A3.shortDescription = "Ini Tiket 3"
+//        A3.gambar = R.drawable.artefak3
+//
+//        val A4 =  Artefak()
+//        A4.nama = "Tiket 4"
+//        A4.shortDescription = "Ini Tiket 4"
+//        A4.gambar = R.drawable.artefak4
+//
+//        val A5 =  Artefak()
+//        A5.nama = "Tiket 5"
+//        A5.shortDescription = "Ini Tiket 5"
+//        A5.gambar = R.drawable.artefak5
+//
+//        arr.add(A1)
+//        arr.add(A2)
+//        arr.add(A3)
+//        arr.add(A4)
+//        arr.add(A5)
+//
+//        return arr
+//    }
+//
+//    val arrKegiatan: ArrayList<Artefak>get(){
+//        val arr = ArrayList<Artefak>()
+//        val A1 =  Artefak()
+//        A1.nama = "Kegiatan 1"
+//        A1.shortDescription = "Ini Kegiatan 1"
+//        A1.gambar = R.drawable.artefak1
+//
+//        val A2 =  Artefak()
+//        A2.nama = "Kegiatan 2"
+//        A2.shortDescription = "Ini Kegiatan 2"
+//        A2.gambar = R.drawable.artefak2
+//
+//        val A3 =  Artefak()
+//        A3.nama = "Kegiatan 3"
+//        A3.shortDescription = "Ini Kegiatan 3"
+//        A3.gambar = R.drawable.artefak3
+//
+//        val A4 =  Artefak()
+//        A4.nama = "Kegiatan 4"
+//        A4.shortDescription = "Ini Kegiatan 4"
+//        A4.gambar = R.drawable.artefak4
+//
+//        val A5 =  Artefak()
+//        A5.nama = "Kegiatan 5"
+//        A5.shortDescription = "Ini Kegiatan 5"
+//        A5.gambar = R.drawable.artefak5
+//
+//        arr.add(A1)
+//        arr.add(A2)
+//        arr.add(A3)
+//        arr.add(A4)
+//        arr.add(A5)
+//
+//        return arr
+//    }
 
     companion object {
         /**

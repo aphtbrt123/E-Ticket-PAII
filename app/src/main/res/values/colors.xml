@@ -15,5 +15,12 @@
     <color name="hijau4">#4E944F</color>
 
     <color name="logout">#a2b223</color>
+    <color name="orange">#FF9800</color>
+
+    <color name="colorPrimary">#001342</color>
+    <color name="colorPrimaryDark">#001342</color>
+    <color name="colorAccent">#001342</color>
+
+    <color name="colorPrimarySoft">#204DBE</color>
 
 </resources>
