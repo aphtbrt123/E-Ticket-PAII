@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import com.google.android.material.snackbar.Snackbar
 import com.kantin.e_ticket.R
+import com.kantin.e_ticket.model.Artefak
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -35,6 +36,10 @@ object Helper {
     }
 
     fun requestBody(field: Int): RequestBody {
+        return field.toString().toRequestBody("text/plain".toMediaTypeOrNull())
+    }
+
+    fun requestBody(field: Array<Artefak>): RequestBody {
         return field.toString().toRequestBody("text/plain".toMediaTypeOrNull())
     }
 

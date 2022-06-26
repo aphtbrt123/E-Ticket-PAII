@@ -49,7 +49,7 @@
             android:id="@+id/rv_produk"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/div_footer"
+            android:layout_above="@id/div_footer"
             android:layout_marginHorizontal="15dp" />
 
         <RelativeLayout
@@ -63,6 +63,7 @@
             android:paddingVertical="10dp">
 
             <LinearLayout
+                android:id="@+id/layout_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -77,6 +78,34 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rp.10.000"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_tanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/layout_total"
+                android:paddingHorizontal="30dp"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tanggal" />
+
+                <TextView
+                    android:id="@+id/tv_tanggal_berkunjung"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:enabled="true"
+                    android:focusable="true"
+                    android:text="Pilih Tanggal"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16dp" />
 

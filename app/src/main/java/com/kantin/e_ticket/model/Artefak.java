@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 @Entity(tableName = "listTicket")
@@ -23,6 +25,7 @@ public class Artefak implements Serializable {
     public String updated_at;
     public String image;
 
+    @SerializedName("total_item")
     public int jumlah = 1;
     public boolean selected = true;
 

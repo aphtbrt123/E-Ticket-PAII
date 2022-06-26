@@ -19,6 +19,9 @@
         android:theme="@style/Theme.ETicket"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.SummaryTransaksiBaruActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.DetailTransaksiActivity"
             android:exported="false" />
         <activity

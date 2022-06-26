@@ -1,5 +1,7 @@
 package com.kantin.e_ticket.app
 
+import com.kantin.e_ticket.model.Artefak
+import com.kantin.e_ticket.model.NewTransaksi
 import com.kantin.e_ticket.model.ResponModel
 import com.kantin.e_ticket.model.transaksi.TransaksiResponModel
 import okhttp3.MultipartBody
@@ -8,6 +10,7 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
 
+@JvmSuppressWildcards
 interface ApiService {
 
     @FormUrlEncoded
@@ -28,7 +31,6 @@ interface ApiService {
         @Field("password") password: String
     ):Call<ResponModel>
 
-
     @GET("ticket")
     fun getTicket():Call<ResponModel>
 
@@ -40,6 +42,11 @@ interface ApiService {
     @GET("transaksi/detail/{transaksi_id}")
     fun getDetailTransaksi(
         @Path("transaksi_id") transaksi_id: Int
+    ): Call<TransaksiResponModel>
+
+    @POST("checkout")
+    fun checkout(
+        @Body body: NewTransaksi
     ): Call<TransaksiResponModel>
 
     @Multipart
