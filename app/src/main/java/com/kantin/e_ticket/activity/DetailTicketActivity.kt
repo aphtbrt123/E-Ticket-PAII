@@ -1,15 +1,19 @@
 package com.kantin.e_ticket.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.gson.Gson
 import com.kantin.e_ticket.R
 import com.kantin.e_ticket.helper.Helper
 import com.kantin.e_ticket.model.Artefak
 import com.kantin.e_ticket.model.listTicket
 import com.kantin.e_ticket.room.MyDatabase
+import com.kantin.e_ticket.util.Config
 import com.squareup.picasso.Picasso
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -35,9 +39,17 @@ class DetailTicketActivity : AppCompatActivity() {
         checkListTicket()
     }
 
-    fun mainButton(){
+    private fun mainButton(){
         btn_keranjang.setOnClickListener {
-            insert()
+            val data = myDb.daoListTicket().getNote(ticket.id)
+            if(data == null){
+                insert()
+            }else{
+                ticket.jumlah = data.jumlah + 1
+                update(data)
+            }
+
+
         }
 
         btn_favorit.setOnClickListener {
@@ -49,6 +61,23 @@ class DetailTicketActivity : AppCompatActivity() {
                 println(note.harga)
             }
         }
+
+        btn_toKeranjang.setOnClickListener {
+            val intent = Intent("event:listTicket")
+            LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
+        }
+    }
+
+    private fun update(data: Artefak){
+
+        CompositeDisposable().add(Observable.fromCallable { myDb.daoListTicket().update(ticket) }
+            .subscribeOn(Schedulers.computation())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                checkListTicket()
+                Log.d("respons", "data updated")
+                Toast.makeText(this,"Berhasil mengubah list tiket anda!", Toast.LENGTH_SHORT).show()
+            })
     }
 
 
@@ -60,11 +89,12 @@ class DetailTicketActivity : AppCompatActivity() {
             .subscribe {
                 checkListTicket()
                 Log.d("respons", "data inserted")
+                Toast.makeText(this,"Berhasil ditambah ke list tiket anda!", Toast.LENGTH_SHORT).show()
             })
     }
 
     private fun checkListTicket(){
-        var dataListTicket = myDb.daoListTicket().getAll()
+        val dataListTicket = myDb.daoListTicket().getAll()
 
         if (dataListTicket.isNotEmpty()){
             div_angka.visibility = View.VISIBLE
@@ -84,7 +114,7 @@ class DetailTicketActivity : AppCompatActivity() {
         tv_deskripsi.text = ticket.deskripsi
 
 
-        val img = "http://192.168.43.104/tiket/public/storage/ticket/" + ticket.image
+        val img = Config.ticketUrl + ticket.image
         Picasso.get()
             .load(img)
             .placeholder(R.drawable.artefak_contoh)

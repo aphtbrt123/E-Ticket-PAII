@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/ETicket/app/src/main/res/drawable/bg_btn_beli.xml" value="0.2611111111111111" />
         <entry key="..\:/ETicket/app/src/main/res/drawable/bg_btn_google.xml" value="0.25" />
+        <entry key="..\:/ETicket/app/src/main/res/drawable/bg_penambahan.xml" value="0.2518518518518518" />
         <entry key="..\:/ETicket/app/src/main/res/drawable/btn_daftar.xml" value="0.25462962962962965" />
         <entry key="..\:/ETicket/app/src/main/res/drawable/btn_login.xml" value="0.25462962962962965" />
         <entry key="..\:/ETicket/app/src/main/res/drawable/ic_baseline_chat_black_24.xml" value="0.25462962962962965" />
@@ -21,9 +22,10 @@
         <entry key="..\:/ETicket/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/ETicket/app/src/main/res/layout/fragment_tiket.xml" value="0.259375" />
         <entry key="..\:/ETicket/app/src/main/res/layout/item_artefak.xml" value="0.259375" />
+        <entry key="..\:/ETicket/app/src/main/res/layout/item_keranjang.xml" value="0.20925925925925926" />
         <entry key="..\:/ETicket/app/src/main/res/layout/item_slider.xml" value="0.259375" />
         <entry key="..\:/ETicket/app/src/main/res/layout/toolbar.xml" value="0.259375" />
-        <entry key="..\:/ETicket/app/src/main/res/layout/toolbar_custom.xml" value="1.0" />
+        <entry key="..\:/ETicket/app/src/main/res/layout/toolbar_custom.xml" value="0.21872103799814643" />
         <entry key="..\:/ETicket/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2" />
       </map>
     </option>

@@ -1,7 +1,6 @@
 package com.kantin.e_ticket
 
-import android.content.Intent
-import android.content.SharedPreferences
+import android.content.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +9,7 @@ import android.view.MenuItem
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kantin.e_ticket.activity.LoginActivity
 import com.kantin.e_ticket.activity.MasukActivity
@@ -21,8 +21,8 @@ import com.kantin.e_ticket.helper.SharedPref
 class MainActivity : AppCompatActivity() {
 
     private val fragmentHome: Fragment = HomeFragment()
-    private val fragmentTiket: Fragment = TiketFragment()
-    private val fragmentAkun: Fragment = AkunFragment()
+    private val fragmentTicket: Fragment = TiketFragment()
+    private var fragmentAkun: Fragment = AkunFragment()
     private val fm: FragmentManager = supportFragmentManager
     private var active: Fragment = fragmentHome
 
@@ -34,19 +34,28 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var s: SharedPref
 
+    private var dariDetail: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         s = SharedPref(this)
 
-        setUpButtonNav()
+        setUpBottomNav()
 
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessage, IntentFilter("event:listTicket"))
     }
 
-    fun setUpButtonNav(){
+    val mMessage: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            dariDetail = true
+        }
+    }
+
+    fun setUpBottomNav() {
         fm.beginTransaction().add(R.id.container, fragmentHome).show(fragmentHome).commit()
-        fm.beginTransaction().add(R.id.container, fragmentTiket).hide(fragmentTiket).commit()
+        fm.beginTransaction().add(R.id.container, fragmentTicket).hide(fragmentTicket).commit()
         fm.beginTransaction().add(R.id.container, fragmentAkun).hide(fragmentAkun).commit()
 
         bottomNavigationView = findViewById(R.id.nav_view)
@@ -55,32 +64,39 @@ class MainActivity : AppCompatActivity() {
         menuItem.isChecked = true
 
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            when(item.itemId){
-                R.id.navigation_home ->{
-                    callFragment(0,fragmentHome, fragmentHome)
-                }
 
-                R.id.navigation_tiket ->{
-                    callFragment(1,fragmentTiket, fragmentTiket)
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    callFargment(0, fragmentHome)
                 }
-
-                R.id.navigation_akun ->{
-                    if (s.getStatusLogin()){
-                        callFragment(2, fragmentAkun, fragmentAkun)
-                    }else{
+                R.id.navigation_tiket -> {
+                    callFargment(1, fragmentTicket)
+                }
+                R.id.navigation_akun -> {
+                    if (s.getStatusLogin()) {
+                        callFargment(2, fragmentAkun)
+                    } else {
                         startActivity(Intent(this, MasukActivity::class.java))
                     }
-
                 }
             }
+
             false
         }
     }
 
-    fun callFragment(int: Int, fragment: Fragment, fragment2: Fragment){
+    fun callFargment(int: Int, fragment: Fragment) {
         menuItem = menu.getItem(int)
         menuItem.isChecked = true
         fm.beginTransaction().hide(active).show(fragment).commit()
-        active = fragment2
+        active = fragment
+    }
+
+    override fun onResume() {
+        if (dariDetail) {
+            dariDetail = false
+            callFargment(1, fragmentTicket)
+        }
+        super.onResume()
     }
 }

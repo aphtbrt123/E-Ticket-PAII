@@ -23,4 +23,7 @@ public class Artefak implements Serializable {
     public String updated_at;
     public String image;
 
+    public int jumlah = 1;
+    public boolean selected = true;
+
 }

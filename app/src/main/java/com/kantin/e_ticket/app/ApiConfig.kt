@@ -2,6 +2,7 @@ package com.inyongtisto.tokoonline.app
 
 import com.google.gson.GsonBuilder
 import com.kantin.e_ticket.app.ApiService
+import com.kantin.e_ticket.util.Config
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -9,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ApiConfig {
-        private const val BASE_URL = "http://192.168.43.104/tiket/public/api/"
+        private const val BASE_URL = Config.baseUrl + "api/"
     private val client: Retrofit
         get() {
             val gson = GsonBuilder()

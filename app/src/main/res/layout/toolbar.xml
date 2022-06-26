@@ -6,6 +6,12 @@
     android:layout_height="wrap_content"
     tools:context=".activity.DetailTicketActivity">
 
+
+    <include
+        layout="@layout/toolbar_custom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

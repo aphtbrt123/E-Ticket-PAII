@@ -19,7 +19,7 @@ abstract class MyDatabase : RoomDatabase() {
                 synchronized(MyDatabase::class) {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
-                        MyDatabase::class.java, "listTicketDB" // Database Name
+                        MyDatabase::class.java, "listTicketDB3" // Database Name
                     ).allowMainThreadQueries().build()
                 }
             }
