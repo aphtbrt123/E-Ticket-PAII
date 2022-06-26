@@ -117,10 +117,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/title_bukti_transfer"
-            android:layout_marginVertical="4dp"
             android:layout_marginHorizontal="8dp"
-            tools:text="Jumlah Transfer: Rp. 250000"
-            android:textColor="@color/black" />
+            android:layout_marginVertical="4dp"
+            android:textColor="@color/black"
+            tools:text="Jumlah Transfer: Rp. 250000" />
 
         <ImageView
             android:id="@+id/image_bukti_transfer"
@@ -129,7 +129,41 @@
             android:layout_below="@id/jumlah_transfer"
             android:layout_marginHorizontal="8dp"
             tools:src="@tools:sample/backgrounds/scenic"
-            android:elevation="@dimen/cardview_default_elevation"/>
+            android:elevation="@dimen/cardview_default_elevation"
+            android:visibility="gone"/>
+        
+        <LinearLayout
+            android:id="@+id/layout_belum_transfer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/jumlah_transfer"
+            android:layout_marginHorizontal="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/deskripsi_belum_transfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/jumlah_transfer"
+                android:text="Silahkan transfer ke rekening BRI berikut"
+                android:textColor="@color/black"
+                android:visibility="visible"/>
+            
+            <TextView
+                android:id="@+id/no_rekening"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="106-551-333-555-42-21"
+                android:textColor="@color/black"
+                android:textSize="16sp"/>
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kirim bukti transfer Anda dengan mengklik tombol di bawah"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_kirim_bukti_transfer"

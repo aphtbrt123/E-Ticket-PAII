@@ -1,5 +1,7 @@
 package com.kantin.e_ticket.activity
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.nfc.NfcAdapter.EXTRA_ID
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -28,6 +30,9 @@ class DetailTransaksiActivity : AppCompatActivity() {
     var idTransaksi: Int = 0
     lateinit var transaksi: Transaksi
 
+    lateinit var myClipboardManager: ClipboardManager
+    lateinit var myClip: ClipData
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailTransaksiBinding.inflate(layoutInflater)
@@ -50,6 +55,13 @@ class DetailTransaksiActivity : AppCompatActivity() {
         idTransaksi = intent.getIntExtra(EXTRA_ID, 0)
         if (idTransaksi == 0) {
             finish()
+        }
+
+        binding.noRekening.setOnClickListener {
+            myClipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            myClip = ClipData.newPlainText("text", binding.noRekening.text.toString())
+            myClipboardManager.setPrimaryClip(myClip)
+            Toast.makeText(this, "No Rekening telah disalin", Toast.LENGTH_SHORT).show()
         }
 
         //set toolbar
@@ -99,6 +111,9 @@ class DetailTransaksiActivity : AppCompatActivity() {
             binding.jumlahTransfer.text = "Anda belum mengunggah bukti transfer"
         }
         else {
+            binding.layoutBelumTransfer.visibility = View.GONE
+            binding.imageBuktiTransfer.visibility = View.VISIBLE
+
             binding.jumlahTransfer.text = "Rp. ${transaksi.totalTransfer}"
             val img = Config.baseUrl + transaksi.buktiTransfer
             Picasso.get()
