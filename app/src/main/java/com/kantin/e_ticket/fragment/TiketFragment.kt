@@ -189,6 +189,7 @@ class TiketFragment : Fragment() {
                 val respon = response.body()!!
                 Toast.makeText(requireActivity(), respon.message, Toast.LENGTH_SHORT).show()
                 if(respon.success == 1){
+                    listTicketTransaksi.clear()
                     val intent = Intent(requireActivity(), DetailTransaksiActivity::class.java)
                         .putExtra(DetailTransaksiActivity.EXTRA_ID, respon.transaksi!!.id)
                     startActivity(intent)
@@ -196,6 +197,7 @@ class TiketFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<TransaksiResponModel>, t: Throwable) {
+                listTicketTransaksi.clear()
                 Toast.makeText(requireActivity(), "Gagal mengirim transaksi", Toast.LENGTH_SHORT)
                     .show()
             }
