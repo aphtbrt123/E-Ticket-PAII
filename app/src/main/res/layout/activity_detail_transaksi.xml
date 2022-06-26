@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DetailTransaksiActivity"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/linear_layout_upper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="8dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/judul_transaksi"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                tools:text="Transaksi"
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/total_harga_transaksi"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                tools:text="Rp. 250000"
+                android:textAlignment="textEnd"
+                android:textSize="16sp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linear_layout_upper"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="8dp" />
+
+        <TextView
+            android:id="@+id/status_transaksi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider"
+            android:layout_marginVertical="4dp"
+            android:layout_marginHorizontal="8dp"
+            android:textColor="@color/black"
+            tools:text="Status" />
+
+        <TextView
+            android:id="@+id/name_transaksi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/status_transaksi"
+            android:layout_marginVertical="4dp"
+            android:layout_marginHorizontal="8dp"
+            tools:text="Nama"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/phone_transaksi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name_transaksi"
+            android:layout_marginHorizontal="8dp"
+            tools:text="Phone"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tanggal_berangkat_transaksi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phone_transaksi"
+            android:layout_marginVertical="4dp"
+            android:layout_marginHorizontal="8dp"
+            tools:text="Tanggal Berangkat"
+            android:textColor="@color/black"/>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tanggal_berangkat_transaksi"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="8dp"/>
+
+        <TextView
+            android:id="@+id/title_bukti_transfer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider2"
+            android:layout_marginVertical="4dp"
+            android:layout_marginHorizontal="8dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:text="Bukti Transfer" />
+
+        <TextView
+            android:id="@+id/jumlah_transfer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_bukti_transfer"
+            android:layout_marginVertical="4dp"
+            android:layout_marginHorizontal="8dp"
+            tools:text="Jumlah Transfer: Rp. 250000"
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:id="@+id/image_bukti_transfer"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_below="@id/jumlah_transfer"
+            android:layout_marginHorizontal="8dp"
+            tools:src="@tools:sample/backgrounds/scenic"
+            android:elevation="@dimen/cardview_default_elevation"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_kirim_bukti_transfer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="8dp"
+            android:text="Kirim Bukti Transfer" />
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/pb"
+            android:layout_centerInParent="true"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

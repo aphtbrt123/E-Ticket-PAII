@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.RelativeLayout
 import android.widget.TextView
 import com.kantin.e_ticket.MainActivity
 import com.kantin.e_ticket.R
+import com.kantin.e_ticket.activity.ListTransaksiActivity
 import com.kantin.e_ticket.activity.LoginActivity
 import com.kantin.e_ticket.helper.SharedPref
 
@@ -27,6 +29,7 @@ class AkunFragment : Fragment() {
 
     lateinit var s:SharedPref
     lateinit var btnLogout:TextView
+    lateinit var btnKeranjang: RelativeLayout
     lateinit var tvNama:TextView
     lateinit var tvEmail:TextView
     lateinit var tvPhone:TextView
@@ -50,6 +53,7 @@ class AkunFragment : Fragment() {
         // Inflate the layout for this fragment
         val view: View =  inflater.inflate(R.layout.fragment_akun, container, false)
         btnLogout = view.findViewById(R.id.btn_logout)
+        btnKeranjang = view.findViewById(R.id.btn_keranjang)
 
         init(view)
 
@@ -57,6 +61,11 @@ class AkunFragment : Fragment() {
 
         btnLogout.setOnClickListener {
             s.setStatusLogin(false)
+        }
+
+        btnKeranjang.setOnClickListener{
+            val intent = Intent(requireActivity(), ListTransaksiActivity::class.java)
+            startActivity(intent)
         }
 
         setData()

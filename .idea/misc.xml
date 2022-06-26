@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Del/A-Kuliah/A-Semester4/Proyek Akhir II/Z-Help-2/E-Ticket-PAII/app/src/main/res/drawable/ic_baseline_error_red_24.xml" value="0.138" />
+        <entry key="..\:/Del/A-Kuliah/A-Semester4/Proyek Akhir II/Z-Help-2/E-Ticket-PAII/app/src/main/res/layout/activity_detail_ticket.xml" value="0.25" />
+        <entry key="..\:/Del/A-Kuliah/A-Semester4/Proyek Akhir II/Z-Help-2/E-Ticket-PAII/app/src/main/res/layout/activity_detail_transaksi.xml" value="0.2" />
+        <entry key="..\:/Del/A-Kuliah/A-Semester4/Proyek Akhir II/Z-Help-2/E-Ticket-PAII/app/src/main/res/layout/activity_list_transaksi.xml" value="0.152" />
+        <entry key="..\:/Del/A-Kuliah/A-Semester4/Proyek Akhir II/Z-Help-2/E-Ticket-PAII/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Del/A-Kuliah/A-Semester4/Proyek Akhir II/Z-Help-2/E-Ticket-PAII/app/src/main/res/layout/fragment_akun.xml" value="0.19166666666666668" />
+        <entry key="..\:/Del/A-Kuliah/A-Semester4/Proyek Akhir II/Z-Help-2/E-Ticket-PAII/app/src/main/res/layout/fragment_bukti_transfer_transaksi.xml" value="0.25" />
+        <entry key="..\:/Del/A-Kuliah/A-Semester4/Proyek Akhir II/Z-Help-2/E-Ticket-PAII/app/src/main/res/layout/list_item_transaksi.xml" value="0.25" />
+        <entry key="..\:/Del/A-Kuliah/A-Semester4/Proyek Akhir II/Z-Help-2/E-Ticket-PAII/app/src/main/res/layout/toolbar.xml" value="0.25" />
+        <entry key="..\:/Del/A-Kuliah/A-Semester4/Proyek Akhir II/Z-Help-2/E-Ticket-PAII/app/src/main/res/layout/toolbar_custom.xml" value="0.15185185185185185" />
         <entry key="..\:/ETicket/app/src/main/res/drawable/bg_btn_beli.xml" value="0.2611111111111111" />
         <entry key="..\:/ETicket/app/src/main/res/drawable/bg_btn_google.xml" value="0.25" />
         <entry key="..\:/ETicket/app/src/main/res/drawable/bg_penambahan.xml" value="0.2518518518518518" />

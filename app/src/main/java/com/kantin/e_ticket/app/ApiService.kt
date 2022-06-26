@@ -1,12 +1,12 @@
 package com.kantin.e_ticket.app
 
 import com.kantin.e_ticket.model.ResponModel
+import com.kantin.e_ticket.model.transaksi.TransaksiResponModel
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -32,5 +32,22 @@ interface ApiService {
     @GET("ticket")
     fun getTicket():Call<ResponModel>
 
+    @GET("transaksi/{user_id}")
+    fun getTransaksi(
+        @Path("user_id") user_id: Int
+    ): Call<TransaksiResponModel>
+
+    @GET("transaksi/detail/{transaksi_id}")
+    fun getDetailTransaksi(
+        @Path("transaksi_id") transaksi_id: Int
+    ): Call<TransaksiResponModel>
+
+    @Multipart
+    @POST("transaksi/bukti-transfer")
+    fun uploadBuktiTransfer(
+        @Part("transaksi_id") transaksi_id: RequestBody,
+        @Part("total_transfer") total_transfer: RequestBody,
+        @Part bukti_transfer: MultipartBody.Part? = null
+    ): Call<TransaksiResponModel>
 
 }
